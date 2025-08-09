@@ -1,4 +1,3 @@
-// server/index.js
 require('dotenv').config();
 const express = require('express');
 const { createServer } = require('node:http');
@@ -24,4 +23,4 @@ io.on('connection', socket => {
   socket.on('disconnect', () => games.cleanup(socket.id));
 });
 
-httpServer.listen(3_000, () => console.log('Server on http://localhost:3000'));
+httpServer.listen(3000, () => console.log('Server on http://localhost:3000'));
