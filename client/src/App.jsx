@@ -28,25 +28,32 @@ export default function App() {
 
   return (
     <div className="app">
-      {!auth.currentUser
-        ? <button onClick={login}>Login with Google</button>
-        : <>
-            <header>
-              <button onClick={logout}>Logout</button>
-              <button onClick={createRoom}>Create Game</button>
-              <button onClick={joinRoom}>Join Game</button>
-              <label>AI depth
-                <input type="number" min="1" max="20" value={aiDepth}
-                       onChange={e => setAiDepth(+e.target.value)} />
-              </label>
-            </header>
-            <main>
-              <Board roomId={roomId} aiDepth={aiDepth} />
-              <Chat roomId={roomId} />
-              <History />
-            </main>
-          </>
-      }
+      {!auth.currentUser ? (
+        <button onClick={login}>Login with Google</button>
+      ) : (
+        <>
+          <header>
+            <button onClick={logout}>Logout</button>
+            <button onClick={createRoom}>Create Game</button>
+            <button onClick={joinRoom}>Join Game</button>
+            <label>
+              AI depth
+              <input
+                type="number"
+                min="1"
+                max="20"
+                value={aiDepth}
+                onChange={e => setAiDepth(+e.target.value)}
+              />
+            </label>
+          </header>
+          <main>
+            <Board roomId={roomId} aiDepth={aiDepth} />
+            <Chat roomId={roomId} />
+            <History />
+          </main>
+        </>
+      )}
     </div>
   );
 }
