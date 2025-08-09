@@ -7,7 +7,7 @@ class GameManager {
   }
 
   createGame(socket, uid) {
-    const roomId = socket.id.slice(0, 6); // lightweight id
+    const roomId = socket.id.slice(0, 6);
     socket.join(roomId);
     this.rooms[roomId] = { chess: new Chess(), history: [] };
     this.io.to(roomId).emit('system', `Game ${roomId} created by ${uid}`);
@@ -39,7 +39,7 @@ class GameManager {
   }
 
   cleanup(socketId) {
-    // optional: remove empty rooms
+    // optional cleanup logic here
   }
 }
 
